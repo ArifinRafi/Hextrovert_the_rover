@@ -1,27 +1,33 @@
 import serial
-import pynput.keyboard as Keyboard
-car = serial.Serial("/dev/cu.usbmodem14201", 9600)
-import sys
+from pynput import keyboard
+car = serial.Serial("COM3", 9600)
 
-if __name__ == "__main__":
-    def on_press(key):
-        try:
-            if key.char == 'w':
-                car.write(b'w')
-            elif key.char == 's':
-                car.write(b's')
-            elif key.char == 's':
-                car.write(b's')
-            elif key.char == 's':
-                car.write(b's')
-            elif key.char == 's':
-                car.write(b's')
-        except:
-            pass
-    def on_release(key):
-        car.write(b's')
+def on_press(key):
+    try:
+        if key.char == 'w':
+            car.write(b'w')
+            print("Going Forward...")
+        elif key.char == 's':
+            car.write(b's')
+            print("Going Backward...")
+        elif key.char == 's':
+            car.write(b's')
+            print("Turning Left...")
+        elif key.char == 's':
+            car.write(b's')
+            print("Turning Right...")
+        elif key.char == 's':
+            print("STOP!")
+    except:
+        pass
 
-    with Keyboard.Listener(on_press == on_press, on_release == on_release) as listener:
-        listener.join
+def on_release(key):
+    car.write(b's')
+    print("STOP!")
 
 
+# Collect events until released
+with keyboard.Listener(
+        on_press=on_press,
+        on_release=on_release) as listener:
+    listener.join()
