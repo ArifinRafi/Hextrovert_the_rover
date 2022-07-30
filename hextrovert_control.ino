@@ -1,16 +1,19 @@
-int R_IS = 6;
-int L_IS = 7;
-int R_EN = 8;
-int L_EN = 9;
+int R_IS = 22;
+int L_IS = 23;
+int R_EN = 24;
+int L_EN = 25;
 
-//motor1, motor3 and motor5
+//motor1, motor3
 int RPWM_1 = 2;
 int LPWM_1 = 3;
 
-//motor2, motor4 and motor 6
+//motor2, motor4
 int RPWM_2 = 4;
 int LPWM_2 = 5;
 
+//motor 5, motor 6
+int RPWM_3 = 6;
+int LPWM_3 = 7;
 
 int speed1 = 150;
 int speed2 = 100;
